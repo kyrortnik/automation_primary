@@ -57,7 +57,7 @@ public class AirportTest {
     public void getPassengerPlaneWithMaxCapacity() {
         PassengerPlane expectedPlaneWithMaxPassengersCapacity = airport.getPassengerPlaneWithMaxPassengersCapacity();
         PassengerPlane actualPlaneWithMaxPassengersCapacity = planeWithMaxPassengerCapacity;
-        Assert.assertTrue(expectedPlaneWithMaxPassengersCapacity.equals(planeWithMaxPassengerCapacity));
+        Assert.assertEquals(expectedPlaneWithMaxPassengersCapacity,actualPlaneWithMaxPassengersCapacity);
     }
 
     @Test
@@ -65,7 +65,7 @@ public class AirportTest {
         airport.sortByMaxLoadCapacity();
         Plane firstPlane = airport.getPlanes().get(0);
         Plane secondPlane = airport.getPlanes().get(1);
-        Assert.assertTrue(firstPlane.getMaxLoadCapacity() < secondPlane.getMaxLoadCapacity());
+        Assert.assertTrue(firstPlane.getMaxLoadCapacity() < secondPlane.getMaxLoadCapacity() || firstPlane.getMaxLoadCapacity() == secondPlane.getMaxLoadCapacity());
     }
 
     @Test
