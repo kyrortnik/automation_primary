@@ -1,7 +1,7 @@
-package main.java.by.epam.planes;
+package by.epam.planes;
 
-import main.java.by.epam.models.ClassificationLevel;
-import main.java.by.epam.models.ExperimentalType;
+import by.epam.models.ClassificationLevel;
+import by.epam.models.ExperimentalType;
 
 import java.util.Objects;
 

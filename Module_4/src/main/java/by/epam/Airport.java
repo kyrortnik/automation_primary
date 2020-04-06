@@ -1,10 +1,10 @@
-package main.java.by.epam;
+package by.epam;
 
-import main.java.by.epam.planes.ExperimentalPlane;
-import main.java.by.epam.models.MilitaryType;
-import main.java.by.epam.planes.MilitaryPlane;
-import main.java.by.epam.planes.PassengerPlane;
-import main.java.by.epam.planes.Plane;
+import by.epam.planes.ExperimentalPlane;
+import by.epam.models.MilitaryType;
+import by.epam.planes.MilitaryPlane;
+import by.epam.planes.PassengerPlane;
+import by.epam.planes.Plane;
 
 import java.util.*;
 

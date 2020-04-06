@@ -1,14 +1,12 @@
-package test.java.by.epam;
+package by.epam;
 
-import main.java.by.epam.Airport;
-import main.java.by.epam.planes.ExperimentalPlane;
-import main.java.by.epam.models.ClassificationLevel;
-import main.java.by.epam.models.ExperimentalType;
-import main.java.by.epam.models.MilitaryType;
-import main.java.by.epam.planes.MilitaryPlane;
-import main.java.by.epam.planes.PassengerPlane;
-import main.java.by.epam.planes.Plane;
-
+import by.epam.models.ClassificationLevel;
+import by.epam.models.ExperimentalType;
+import by.epam.models.MilitaryType;
+import by.epam.planes.ExperimentalPlane;
+import by.epam.planes.MilitaryPlane;
+import by.epam.planes.PassengerPlane;
+import by.epam.planes.Plane;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
