@@ -3,6 +3,6 @@
 /targer
 /bin
 *.idea
-*.iml
+automation_primary.imliml
 /out
-/automation_primary.iml
+
