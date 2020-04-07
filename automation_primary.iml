@@ -14,7 +14,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Maven: org.testng:testng:7.0.0-beta1" level="project" />
     <orderEntry type="library" name="Maven: com.beust:jcommander:1.72" level="project" />
-    <orderEntry type="library" name="Maven: org.testng:testng:7.0.0-beta1" level="project" />
-    <orderEntry type="library" name="Maven: com.beust:jcommander:1.72" level="project" />
+    <orderEntry type="library" name="Maven: org.unlaxer:calculator:1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.unlaxer:unlaxer-common:1.0" level="project" />
   </component>
 </module>
