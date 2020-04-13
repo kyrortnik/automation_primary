@@ -1,0 +1,15 @@
+<!DOCTYPE suite >
+<suite name = "testng suite">
+    <test name = "Basic Operations Tests">
+        <classes>
+            <class name = "by.epam.CalculatorSumLong"/>
+            <class name = "by.epam.CalculatorSumDouble"/>
+            <class name = "by.epam.CalculatorSubLong"/>
+            <class name = "by.epam.CalculatorSubDouble"/>
+            <class name = "by.epam.CalculatorMultLong"/>
+            <class name = "by.epam.CalculatorMultDouble"/>
+            <class name = "by.epam.CalculatorDivLong"/>
+            <class name = "by.epam.CalculatorDivDouble"/>
+        </classes>
+    </test>>
+</suite>
