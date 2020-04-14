@@ -1,19 +1,19 @@
 package by.epam;
 
 import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 public class CalculatorSin extends BaseTest{
 
     @Test
-    public void SinZero(){
+    public void sinZero(){
         double actualSinZero = calculator.sin(0);
-        Assert.assertEquals(actualSinZero, 0, "Incorrect value for cos");
+        Assert.assertEquals(actualSinZero, 0, "Incorrect value for sin");
     }
 
     @Test
-    private void cosPi(){
-        double actualSinPi = calculator.sin(Math.PI);
-        Assert.assertEquals(actualSinPi,0,"Incorrect value for cos");
+    public void sin90Degrees(){
+        double actualSinPi = calculator.sin(radiansTestValues);
+        Assert.assertEquals(actualSinPi,1,"Incorrect value for sin");
     }
 }

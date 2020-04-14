@@ -1,7 +1,7 @@
 package by.epam;
 
 import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 public class CalculatorPow extends BaseTest{
 
@@ -14,7 +14,7 @@ public class CalculatorPow extends BaseTest{
     @Test
     public void PowNegative(){
         double actualPowNegative = calculator.pow(-2,4);
-        Assert.assertEquals(actualPowNegative,-16,"Incorrect pow result");
+        Assert.assertEquals(actualPowNegative,16,"Incorrect pow result");
     }
 
     @Test

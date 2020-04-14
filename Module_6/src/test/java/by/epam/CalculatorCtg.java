@@ -1,20 +1,22 @@
 package by.epam;
 
 import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 public class CalculatorCtg extends BaseTest{
 
     @Test
-    public void ctgPositive(){
-        double actualCtgPositive = calculator.ctg(0);
-        Assert.assertEquals(actualCtgPositive,0,"Incorrect ctg result");
+    public void ctgZero(){
+        double actualCtgZero = calculator.ctg(0);
+        double expectedCtgZero = 1.0 / Math.tan(0);
+        Assert.assertEquals(actualCtgZero,expectedCtgZero,"Incorrect ctg result");
     }
 
     @Test
-    public void ctgPi(){
-        double actualCtgPi = calculator.ctg(Math.PI);
-        Assert.assertEquals(actualCtgPi,-1,"Incorrect ctg result");
+    public void ctg90Degrees(){
+        double actualCtg90Degrees = calculator.ctg(radiansTestValues);
+        double expectedCtg90Degrees = 1.0 / Math.tan(radiansTestValues);
+        Assert.assertEquals(actualCtg90Degrees,expectedCtg90Degrees,"Incorrect ctg result");
     }
 
 }

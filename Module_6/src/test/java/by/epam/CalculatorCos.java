@@ -1,7 +1,9 @@
 package by.epam;
 
+
+import org.junit.jupiter.api.Test;
 import org.testng.Assert;
-import org.testng.annotations.Test;
+
 
 public class CalculatorCos extends BaseTest{
 
@@ -13,9 +15,9 @@ public class CalculatorCos extends BaseTest{
     }
 
     @Test
-    private void cosPi(){
-        double actualCosPi = calculator.cos(Math.PI);
-        Assert.assertEquals(actualCosPi,-1,"Incorrect value for cos");
+    public void cos90Degrees(){
+        double actualSinPi = calculator.cos(radiansTestValues);
+        Assert.assertEquals(actualSinPi,0,"Incorrect value for cos");
     }
 
 }
