@@ -1,15 +1,27 @@
-<!DOCTYPE suite >
-<suite name = "testng suite">
-    <test name = "Basic Operations Tests">
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name = "testng suite" parallel="classes" thread-count="2">
+    <test name = "Test Sum" >
         <classes>
             <class name = "by.epam.CalculatorSumLong"/>
             <class name = "by.epam.CalculatorSumDouble"/>
+        </classes>
+    </test>
+    <test name = "Test Sub">
+        <classes>
             <class name = "by.epam.CalculatorSubLong"/>
             <class name = "by.epam.CalculatorSubDouble"/>
+        </classes>
+    </test>
+    <test name = "Test Mult">
+        <classes>
             <class name = "by.epam.CalculatorMultLong"/>
             <class name = "by.epam.CalculatorMultDouble"/>
+        </classes>
+    </test>
+    <test name = "Test Div">
+        <classes>
             <class name = "by.epam.CalculatorDivLong"/>
             <class name = "by.epam.CalculatorDivDouble"/>
         </classes>
-    </test>>
+    </test>
 </suite>
