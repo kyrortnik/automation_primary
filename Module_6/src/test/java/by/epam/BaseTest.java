@@ -7,9 +7,9 @@ import org.testng.annotations.BeforeClass;
 
 public class BaseTest {
 
-    protected Calculator calculator = new Calculator();
-    protected double degreeTestValue = 90;
-    protected double radiansTestValues = Math.toRadians(degreeTestValue);
+    protected Calculator calculator;
+    protected final double degreeTestValue = 90;
+    protected final double radiansTestValues = Math.toRadians(degreeTestValue);
 
     @BeforeClass
     public void setUp() {

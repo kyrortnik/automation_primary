@@ -7,7 +7,6 @@ import org.testng.Assert;
 
 public class CalculatorCos extends BaseTest{
 
-
     @Test
     public void CosZero(){
         double actualCosZero = calculator.cos(0);

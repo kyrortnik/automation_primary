@@ -12,6 +12,12 @@ public class CalculatorDivDouble extends BaseTest{
         Assert.assertEquals(actualDivMult, expectedResult,"Division by zero is forbidden");
     }
 
+    @Test
+    public void divDoubleZero(){
+        double actualDivDoubleZero = calculator.div(10.0,0.0);
+        Assert.assertTrue(Double.isInfinite(actualDivDoubleZero));
+    }
+
     @DataProvider(name = "valuesForDivMult")
     public Object[][] divValuesLong() {
         return new Object[][]{
@@ -19,11 +25,6 @@ public class CalculatorDivDouble extends BaseTest{
                 {-15, -5, 3},
                 {-30, 10, -3}
         };
+    }
 
-    }
-    @Test
-    public void divDoubleZero(){
-        double actualDivDoubleZero = calculator.div(10.0,0.0);
-        Assert.assertTrue(Double.isInfinite(actualDivDoubleZero));
-    }
 }
