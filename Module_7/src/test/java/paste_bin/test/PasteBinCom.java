@@ -1,11 +1,11 @@
-package test;
+package paste_bin.test;
 
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import page.paste_bin_com.PasteBinHomePage;
-import page.paste_bin_com.PasteBinResultPage;
+import paste_bin.page.PasteBinHomePage;
+import paste_bin.page.PasteBinResultPage;
 
 public class PasteBinCom {
 
