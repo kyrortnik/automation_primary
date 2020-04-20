@@ -1,50 +1,67 @@
 package test;
 
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import page.PasteBinHomePage;
-import page.PasteBinResultPage;
+import page.paste_bin_com.PasteBinHomePage;
+import page.paste_bin_com.PasteBinResultPage;
 
-public class PasteBinCom extends BaseTest {
+public class PasteBinCom {
 
+    WebDriver driver = new ChromeDriver();
     PasteBinHomePage homePage = new PasteBinHomePage(driver);
     PasteBinResultPage resultPage;
 
-    private String pasteCode;
-    private String pasteName;
+    private String pasteText =
+            "git config --global user.name  \"New Sheriff in Town\"\n" +
+            "git reset $(git commit-tree HEAD^{tree} -m \"Legacy code\")\n" +
+            "git push origin master --force";
 
+    private String pasteName = "how to gain dominance among developers";
+
+    @Test
+    public void ICanWin(){
+        homePage.openPage();
+        homePage.inputPasteCode("Hello from WebDriver");
+        homePage.choseExpiration10Minutes();
+        homePage.inputPasteName("helloweb");
+        resultPage = homePage.createNewPaste();
+        Assert.assertTrue(true);
+    }
 
 
     @Test
     public void pageNameCorrespondsToPasteName() {
 
-        pasteCode =
-        "git config --global user.name  \"New Sheriff in Town\"\n" +
-                "git reset $(git commit-tree HEAD^{tree} -m \"Legacy code\")\n" +
-                "git push origin master --force";
-
-        pasteName = "how to gain dominance among developers";
-
-
-        driver.get("https://pastebin.com");
-        homePage.inputPasteCode(pasteCode);
-        homePage.choseExpiration();
+        homePage.openPage();
+        homePage.inputPasteCode(pasteText);
         homePage.inputPasteName(pasteName);
-        homePage.choseSyntaxHighlighting();
-        homePage.createNewPaste();
-        Assert.assertEquals("[Bash] "+ pasteName +"  - Pastebin.com",driver.getTitle());
+        homePage.choseSyntaxHighlightingBash();
+        resultPage = homePage.createNewPaste();
+        String actualPageName = "[Bash] "+ resultPage.getPasteName() +" - Pastebin.com";
+        Assert.assertEquals(actualPageName,driver.getTitle());
     }
 
     @Test
     public void pasteSyntaxIsBash(){
-        driver.get("https://pastebin.com");
-        WebElement element = driver.findElement(By.xpath("//*[starts-with(@href, '/archive/')]"));
-        Assert.assertEquals("Bash",element.getText());
 
+        homePage.openPage();
+        homePage.inputPasteCode(pasteText);
+        homePage.inputPasteName(pasteName);
+        homePage.choseSyntaxHighlightingBash();
+        resultPage = homePage.createNewPaste();
+        Assert.assertEquals(resultPage.getPasteSyntax(),"Bash");
     }
 
     @Test
-    public void resultPagePasteCorrespondsToEnteredPaste(){}
+    public void resultPagePasteCorrespondsToEnteredPaste(){
+
+        homePage.openPage();
+        homePage.inputPasteCode(pasteText);
+        homePage.inputPasteName(pasteName);
+        homePage.choseSyntaxHighlightingBash();
+        resultPage = homePage.createNewPaste();
+        Assert.assertEquals(resultPage.getPasteText(), pasteText);
+    }
 }

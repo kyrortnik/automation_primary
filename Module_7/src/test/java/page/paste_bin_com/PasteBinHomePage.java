@@ -1,10 +1,9 @@
-package page;
+package page.paste_bin_com;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
@@ -37,22 +36,21 @@ public class PasteBinHomePage {
     @FindBy(xpath = "//input[@id='submit']")
     private WebElement createNewPasteButton;
 
-//    public void openPage(){
-//        driver.get(HOMEPAGE_URL);
-//        new WebDriverWait(driver,10).until(CustomCondition.)
-//    }
+    public void openPage(){
+        driver.get(HOMEPAGE_URL);
+    }
 
     public void inputPasteCode(String paste){
         pasteCodeInput.click();
         pasteCodeInput.sendKeys(paste);
     }
 
-    public void choseExpiration(){
+    public void choseExpiration10Minutes(){
         expirationTimeDDL.click();
         openedDDLALLElements.get(1).click();
     }
 
-    public void choseSyntaxHighlighting(){
+    public void choseSyntaxHighlightingBash(){
         syntaxHighlightingDDL.click();
         openedDDLALLElements.get(2).click();
     }
