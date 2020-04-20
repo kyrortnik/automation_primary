@@ -18,7 +18,7 @@ public class PasteBinCom extends BaseTest {
 
 
     @Test
-    public void pageNameCorrespondsToPasteName() throws InterruptedException {
+    public void pageNameCorrespondsToPasteName() {
 
         pasteCode =
         "git config --global user.name  \"New Sheriff in Town\"\n" +
@@ -33,13 +33,13 @@ public class PasteBinCom extends BaseTest {
         homePage.choseExpiration();
         homePage.inputPasteName(pasteName);
         homePage.choseSyntaxHighlighting();
-//        Thread.sleep(2000);
         homePage.createNewPaste();
         Assert.assertEquals("[Bash] "+ pasteName +"  - Pastebin.com",driver.getTitle());
     }
 
     @Test
     public void pasteSyntaxIsBash(){
+        driver.get("https://pastebin.com");
         WebElement element = driver.findElement(By.xpath("//*[starts-with(@href, '/archive/')]"));
         Assert.assertEquals("Bash",element.getText());
 
