@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
@@ -15,7 +17,6 @@ public class PasteBinHomePage {
     public PasteBinHomePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver,this);
-
     }
 
     @FindBy(xpath = "//*[@id='paste_code']")
@@ -36,28 +37,33 @@ public class PasteBinHomePage {
     @FindBy(xpath = "//input[@id='submit']")
     private WebElement createNewPasteButton;
 
-    public void openPage(){
+    public PasteBinHomePage openPage(){
         driver.get(HOMEPAGE_URL);
+        return this;
     }
 
-    public void inputPasteCode(String paste){
+    public PasteBinHomePage inputPasteCode(String paste){
         pasteCodeInput.click();
         pasteCodeInput.sendKeys(paste);
+        return this;
     }
 
-    public void choseExpiration10Minutes(){
+    public PasteBinHomePage choseExpiration10Minutes(){
         expirationTimeDDL.click();
         openedDDLALLElements.get(1).click();
+        return this;
     }
 
-    public void choseSyntaxHighlightingBash(){
+    public PasteBinHomePage choseSyntaxHighlightingBash(){
         syntaxHighlightingDDL.click();
         openedDDLALLElements.get(2).click();
+        return this;
     }
 
-    public void inputPasteName(String name){
+    public PasteBinHomePage inputPasteName(String name){
         pasteName.click();
         pasteName.sendKeys(name);
+        return this;
     }
 
     public PasteBinResultPage createNewPaste(){

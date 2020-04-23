@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.testng.Assert;
 
 
-public class CalculatorCos extends BaseTest{
+public class CalculatorCos extends BaseTest {
 
     @Test
     public void CosZero(){

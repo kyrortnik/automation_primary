@@ -1,18 +1,13 @@
 package test;
 
-import org.junit.jupiter.api.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
 import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
 import page.PasteBinHomePage;
 import page.PasteBinResultPage;
 
-public class PasteBinCom {
+public class PasteBinCom extends BaseTest {
 
-    WebDriver driver = new ChromeDriver();
-    PasteBinHomePage homePage = new PasteBinHomePage(driver);
+    PasteBinHomePage homePage;
     PasteBinResultPage resultPage;
 
     private final String pasteText =
@@ -22,14 +17,13 @@ public class PasteBinCom {
 
     private final String pasteName = "how to gain dominance among developers";
 
-
-
     @Test
     public void ICanWin(){
-        homePage.openPage();
-        homePage.inputPasteCode("Hello from WebDriver");
-        homePage.choseExpiration10Minutes();
-        homePage.inputPasteName("helloweb");
+        homePage = new PasteBinHomePage(driver)
+                .openPage()
+                .inputPasteCode("Hello from WebDriver")
+                .choseExpiration10Minutes()
+                .inputPasteName("helloweb");
         resultPage = homePage.createNewPaste();
         Assert.assertNotNull(resultPage);
     }
@@ -37,11 +31,11 @@ public class PasteBinCom {
 
     @Test
     public void pageNameCorrespondsToPasteName() {
-
-        homePage.openPage();
-        homePage.inputPasteCode(pasteText);
-        homePage.inputPasteName(pasteName);
-        homePage.choseSyntaxHighlightingBash();
+        homePage = new PasteBinHomePage(driver)
+        .openPage()
+        .inputPasteCode(pasteText)
+        .inputPasteName(pasteName)
+        .choseSyntaxHighlightingBash();
         resultPage = homePage.createNewPaste();
         String actualPageName = "[Bash] "+ resultPage.getPasteName() +" - Pastebin.com";
         Assert.assertEquals(actualPageName,driver.getTitle());
@@ -49,11 +43,11 @@ public class PasteBinCom {
 
     @Test
     public void pasteSyntaxIsBash(){
-
-        homePage.openPage();
-        homePage.inputPasteCode(pasteText);
-        homePage.inputPasteName(pasteName);
-        homePage.choseSyntaxHighlightingBash();
+        homePage = new PasteBinHomePage(driver)
+        .openPage()
+        .inputPasteCode(pasteText)
+        .inputPasteName(pasteName)
+        .choseSyntaxHighlightingBash();
         resultPage = homePage.createNewPaste();
         Assert.assertEquals(resultPage.getPasteSyntax(),"Bash");
     }
@@ -61,11 +55,14 @@ public class PasteBinCom {
     @Test
     public void resultPagePasteCorrespondsToEnteredPaste(){
 
-        homePage.openPage();
-        homePage.inputPasteCode(pasteText);
-        homePage.inputPasteName(pasteName);
-        homePage.choseSyntaxHighlightingBash();
+        homePage = new PasteBinHomePage(driver)
+        .openPage()
+        .inputPasteCode(pasteText)
+        .inputPasteName(pasteName)
+        .choseSyntaxHighlightingBash();
         resultPage = homePage.createNewPaste();
         Assert.assertEquals(resultPage.getPasteText(), pasteText);
     }
+
+
 }
