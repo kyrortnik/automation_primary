@@ -1,16 +1,25 @@
 package page;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+
 
 public class GoogleCloudHomePage {
 
     private static final String HOMEPAGE_URL = "https://cloud.google.com/";
     private WebDriver driver;
+
 
     public GoogleCloudHomePage(WebDriver driver){
         this.driver = driver;
@@ -19,25 +28,27 @@ public class GoogleCloudHomePage {
     }
 
     @FindBy(xpath = "//a[@data-category='Site-Wide Custom Events'] [contains(text(),'Products')]")
-    WebElement exploreAllProductsButton;
+    WebElement goToProductsButton;
 
-    @FindBy(xpath = "//a[@track-metadata-href='/products']")
+    @FindBy(xpath = "/html/body/section/devsite-header/div/div[1]/div/div/div[2]/div[1]/cloudx-tabs-nav/div/tab[3]/div/div[1]/div/a")//
     WebElement seeAllProductsButton;
 
-    @FindBy(xpath = "//*[@href='/pricing'][@class='cloud-button cloud-button--secondary']")
-    WebElement seePricingButton;
 
-    @FindBy(xpath = "//a[@href='/pricing/calculators']")
-    WebElement calculatorsButton;
 
-//    @FindBy(xpath = "//div[@title='Compute Engine'][@class='hexagon']")
-//    WebElement computeEngineButton;
 
-    @FindBy(xpath = "//input[@id='input_58']")
+    @FindBy(xpath = "//*[@id=\"mainForm\"]/md-tabs/md-tabs-wrapper/md-tabs-canvas/md-pagination-wrapper/md-tab-item[1]/div/div")
+    WebElement computeEngineButton;
+
+    @FindBy(xpath = "//input[@id='input_58']") ////form[@name='ComputeEngineForm']/div/div/md-input-container[@class='flex'][1]
     WebElement numberOfInstancesInput;
 
-    @FindBy(xpath = "//md-select-value[@id='select_value_label_55']")
-    List<WebElement> machineTypes;
+
+//    @FindBy(xpath = "//md-select-value[@id='select_value_label_55']")
+//    List<WebElement> machineTypes;
+
+
+    @FindBy(xpath = "//*[contains(text(),'n1-standard-8 (vCPUs: 8, RAM: 30GB)')]  ")
+    WebElement listItem;
 
     @FindBy(xpath = "//md-checkbox/div[1]")
     WebElement addGPUsCheckbox;
@@ -60,30 +71,68 @@ public class GoogleCloudHomePage {
     @FindBy(xpath = "//button[@class='md-raised md-primary cpc-button md-button md-ink-ripple']")
     WebElement addToEstimateButton;
 
-    public void openPage(){
+    @FindBy(xpath = "//a[@class='cloud-free-trial-button cloud-free-trial-enabled']")
+    WebElement test;
+
+
+    @FindBy(xpath = "//div[7]/div/md-input-container/md-select/md-select-value/span/div")
+    WebElement instanceTypeDDL;
+
+    public GoogleCloudHomePage openPage(){
         driver.get(HOMEPAGE_URL);
+        return this;
+
     }
 
-    public void goToExploreAllProducts(){
-    exploreAllProductsButton.click();
+    public GoogleCloudHomePage goToProducts(){
+        goToProductsButton.click();
+        return this;
     }
 
-    public void goToSeePricing(){
-        seeAllProductsButton.click();
-        seePricingButton.click();
-    }
-
-    public void goToCalculators(){
-        calculatorsButton.click();
-    }
-
-//    public void activeComputeEngine(){
-//        computeEngineButton.click();
+//    public GoogleCloudProductsPage goToSeeAllProducts(){
+//        WebDriverWait wait = new WebDriverWait(driver,5);
+//        wait.until(
+//                ExpectedConditions.elementToBeClickable(seeAllProductsButton));
+////        JavascriptExecutor executor = (JavascriptExecutor) driver;
+////        executor.executeScript("arguments[0].click();",seeAllProductsButton );
+//       seeAllProductsButton.click();
+//        return  new GoogleCloudProductsPage(driver);
+//
 //    }
 
-    public void putNumberOfInstances(String numOfInstances){
-        numberOfInstancesInput.sendKeys(numOfInstances);
+
+
+
+    public boolean activeComputeEngine(){
+       return  computeEngineButton.isEnabled();
     }
+
+    public GoogleCloudHomePage putNumberOfInstances(String numOfInstances){
+        numberOfInstancesInput.sendKeys(numOfInstances);
+        return this;
+    }
+//    public GoogleCloudHomePage putMachineType(){
+//            machineTypes
+//
+//            return this;
+//    }
+
+    public GoogleCloudHomePage choseInstanceType(){
+        instanceTypeDDL.click();
+        WebDriverWait wait = new WebDriverWait(driver,5);
+        wait.until(
+                ExpectedConditions.elementToBeClickable(By.xpath("xpath=//md-option[@id='select_option_212']/div")));
+
+        driver.findElement(By.xpath("xpath=//md-option[@id='select_option_212']/div")).click();
+
+
+//
+//      driver.findElement(By.xpath("/html/body/div[3]/md-select-menu/md-content/md-optgroup[3]/md-option[4]/div[1]")).click();
+
+        return this;
+    }
+
+
 
 
 
